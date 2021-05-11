@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.17)
-project(Class_reworked)
+project(Poliomorfizm)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Class_reworked main.cpp my_string.cpp my_string.h)
+add_executable(Poliomorfizm main.cpp Thermic_process.cpp Thermic_process.h Izohor.cpp Izohor.h Izobar.cpp Izobar.h)

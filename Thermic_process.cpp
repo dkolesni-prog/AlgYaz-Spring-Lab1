@@ -1,3 +1,5 @@
+//
+// Created by Daniil Kolesnik on 25/03/2021.
 //ЛР3. Полиморфизм. Вариант 14.
 //Абстрактный класс – термический процесс. Методы: вычисление работы, совершённой газом, печать параметров.
 //Производные классы – изохорный процесс, изобарный процесс.
@@ -11,41 +13,25 @@
 //
 //        газа. В изобарном процессе p = const, в изохорном процессе V = const.
 
-#include <iostream>
-#include <vector>
-#include "Izohor.h"
-#include "Izobar.h"
 #include "Thermic_process.h"
+#include <iostream>
 
 
+Thermic_process::Thermic_process(float _V1, float _V2, float _P) : V1(_V1), V2(_V2), P(_P) {
 
-int main() {
-    u_int const n = 4;
+}
 
-    std::vector <Thermic_process*> processess;
-    Thermic_process* const test1 = new Izohor(1,2,3);
-    processess.push_back(test1);
-    Thermic_process* const test2 = new Izobar(4, 5, 6);
-    processess.push_back(test2);
-    Thermic_process* const test3 = new Izohor(6,5,4);
-    processess.push_back(test3);
-    Thermic_process* const test4 = new Izobar(3, 2, 100);
-    processess.push_back(test4);
-
-//    for (int i = 0; i < n; ++i) { // auto
-//        processess[i]->work();
-//        processess[i]->print();
-//        std::cout << "----------------------" << std::endl;
-//    }
-
-    for (auto i: processess) { // auto
-        i->print();
-        std::cout << "----------------------" << std::endl;
+void Thermic_process::print() {
+    A = P * (V2 - V1);
+    if (A != 0){
+        std::cout << "A = " << A << std::endl;
+        std::cout << "V1 = " << V1 << std::endl;
+        std::cout << "V2 = " << V2 << std::endl;
+        std::cout << "P = " << P << std::endl;
     }
-    delete test1;
-    delete test2;
-    delete test3;
-    delete test4;
-
-    return 0;
+    else {
+        std::cout << "A = " << A << std::endl;
+        std::cout << "V1 = V2" << std::endl;
+        std::cout << "P = " << P << std::endl;
+    }
 }
