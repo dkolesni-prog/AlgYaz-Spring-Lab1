@@ -1,3 +1,5 @@
+//
+// Created by Daniil Kolesnik on 25/03/2021.
 //ЛР3. Полиморфизм. Вариант 14.
 //Абстрактный класс – термический процесс. Методы: вычисление работы, совершённой газом, печать параметров.
 //Производные классы – изохорный процесс, изобарный процесс.
@@ -11,41 +13,17 @@
 //
 //        газа. В изобарном процессе p = const, в изохорном процессе V = const.
 
-#include <iostream>
-#include <vector>
-#include "Izohor.h"
-#include "Izobar.h"
+#ifndef POLIOMORFIZM_IZOBAR_H
+#define POLIOMORFIZM_IZOBAR_H
+
 #include "Thermic_process.h"
 
 
+class Izobar: public Thermic_process {
+public:
+    float work() override;
+    Izobar (float V1, float V2, float P );
+};
 
-int main() {
-    u_int const n = 4;
 
-    std::vector <Thermic_process*> processess;
-    Thermic_process* const test1 = new Izohor(1,2,3);
-    processess.push_back(test1);
-    Thermic_process* const test2 = new Izobar(4, 5, 6);
-    processess.push_back(test2);
-    Thermic_process* const test3 = new Izohor(6,5,4);
-    processess.push_back(test3);
-    Thermic_process* const test4 = new Izobar(3, 2, 100);
-    processess.push_back(test4);
-
-//    for (int i = 0; i < n; ++i) { // auto
-//        processess[i]->work();
-//        processess[i]->print();
-//        std::cout << "----------------------" << std::endl;
-//    }
-
-    for (auto i: processess) { // auto
-        i->print();
-        std::cout << "----------------------" << std::endl;
-    }
-    delete test1;
-    delete test2;
-    delete test3;
-    delete test4;
-
-    return 0;
-}
+#endif //POLIOMORFIZM_IZOBAR_H
